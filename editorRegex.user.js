@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LeekWars Editeur Regex
-// @version      0.6
+// @version      0.6.1
 // @description  Ajout de la prise en charge des regex dans l'éditeur
 // @author       jojo123
 // @downloadURL  https://raw.githubusercontent.com/jogalaxy/editorRegex/master/editorRegex.user.js
@@ -18,7 +18,7 @@ var regex = function()
 		while(content != previousContent)
 		{
 			previousContent = content;
-			content = content.replace(/([a-zA-Z\])]+)\[('|")([a-zA-Z]+)('|")\]/g, '$1.$3');
+			content = content.replace(/([a-zA-Z\])]+)\[  ('|")([a-zA-Z]+)('|")  \]/g, '$1.$3');
 		}
 
 		previousContent = "";
@@ -43,7 +43,7 @@ var regex = function()
 		while(content != previousContent)
 		{
 			previousContent = content;
-			content = content.replace(/([a-zA-Z\])]+)\.([a-zA-Z]+)/g, "$1['$2']");
+			content = content.replace(/([a-zA-Z\])]+)\.([a-zA-Z]+)/g, "$1[  '$2'  ]");
 		}
 
 		return content;
