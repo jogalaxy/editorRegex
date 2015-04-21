@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LeekWars Editeur Regex
-// @version      0.5
+// @version      0.6
 // @description  Ajout de la prise en charge des regex dans l'éditeur
 // @author       jojo123
 // @downloadURL  https://raw.githubusercontent.com/jogalaxy/editorRegex/master/editorRegex.user.js
@@ -9,7 +9,8 @@
 // @grant        none
 // ==/UserScript==
 
-window.addEventListener('load', function() {
+var regex = function()
+{
 
 	function regex_open(content)
 	{
@@ -47,6 +48,8 @@ window.addEventListener('load', function() {
 
 		return content;
 	}
+
+	console.log("test");
 
 	for (var editor in editors)
 	{
@@ -184,4 +187,8 @@ window.addEventListener('load', function() {
 
 	editors[current].load();
 
-}, false);
+}
+
+window.addEventListener('load', regex, false);
+regex();
+
