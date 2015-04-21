@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name         LeekWars Editeur Regex
-// @version      0.3
-// @description  Ajoute la prise en charge des regex dans l'éditeur
+// @version      0.4
+// @description  Ajout de la prise en charge des regex dans l'éditeur
 // @author       jojo123
+// @downloadURL  https://raw.githubusercontent.com/jogalaxy/editorRegex/master/editorRegex.user.js
+// @updateURL    https://raw.githubusercontent.com/jogalaxy/editorRegex/master/editorRegex.user.js
 // @match        http://leekwars.com/editor*
 // @grant        none
 // ==/UserScript==
