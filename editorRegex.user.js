@@ -19,7 +19,7 @@ var regex = function()
 		while(content != previousContent)
 		{
 			previousContent = content;
-			content = content.replace(/([a-zA-Z\])]+)\[  ('|")([a-zA-Z]+)('|")  \]/g, '$1.$3');
+			content = content.replace(/([a-zA-Z0-9\])]+)\[  ('|")([a-zA-Z0-9]+)('|")  \]/g, '$1.$3');
 		}
 
 		// Classe
@@ -41,7 +41,7 @@ var regex = function()
 		while(content != previousContent)
 		{
 			previousContent = content;
-			content = content.replace(/([a-zA-Z\])]+)\.([a-zA-Z]+)/g, "$1[  '$2'  ]");
+			content = content.replace(/([a-zA-Z0-9\])]+)\.([a-zA-Z0-9]+)/g, "$1[  '$2'  ]");
 		}
 
 		// Classe
