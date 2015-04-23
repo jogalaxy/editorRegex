@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LeekWars Editeur Regex
-// @version      0.7
+// @version      0.7.1
 // @description  Ajout de la prise en charge des regex dans l'éditeur
 // @author       jojo123
 // @downloadURL  https://raw.githubusercontent.com/jogalaxy/editorRegex/master/editorRegex.user.js
@@ -28,7 +28,7 @@ var regex = function()
 		{
 			previousContent = content;
 			content = content.replace(/function ([a-zA-Z0-9]+)\(\)([ \r\n]*)\{ var this = \[\]; \/\* Start Class \*\//g, 'class $1$2{');
-			content = content.replace(/return this;} \/\* End Class \*\//g, '}');
+			content = content.replace(/return @this;} \/\* End Class \*\//g, '}');
 		}
 
 		return content;
@@ -51,7 +51,7 @@ var regex = function()
 			var _class = classPattern.exec(content);
 			var _class_pos = content.indexOf("class " + _class[1] + _class[2] + "{");
 			var _class_end = content.indexOf("\n}", _class_pos);
-			content = substr_replace(content, "return this;} /* End Class */", _class_end+1, 1);
+			content = substr_replace(content, "return @this;} /* End Class */", _class_end+1, 1);
 			content = content.replace("class " + _class[1] + _class[2] + "{", "function " + _class[1] + "()" + _class[2] + "{ var this = []; /* Start Class */");
 		}
 
@@ -201,24 +201,7 @@ var regex = function()
 window.addEventListener('load', regex, false);
 regex();
 
-
 function substr_replace(str, replace, start, length) {
-	//  discuss at: http://phpjs.org/functions/substr_replace/
-	// original by: Brett Zamir (http://brett-zamir.me)
-	//   example 1: substr_replace('ABCDEFGH:/MNRPQR/', 'bob', 0);
-	//   returns 1: 'bob'
-	//   example 2: $var = 'ABCDEFGH:/MNRPQR/';
-	//   example 2: substr_replace($var, 'bob', 0, $var.length);
-	//   returns 2: 'bob'
-	//   example 3: substr_replace('ABCDEFGH:/MNRPQR/', 'bob', 0, 0);
-	//   returns 3: 'bobABCDEFGH:/MNRPQR/'
-	//   example 4: substr_replace('ABCDEFGH:/MNRPQR/', 'bob', 10, -1);
-	//   returns 4: 'ABCDEFGH:/bob/'
-	//   example 5: substr_replace('ABCDEFGH:/MNRPQR/', 'bob', -7, -1);
-	//   returns 5: 'ABCDEFGH:/bob/'
-	//   example 6: substr_replace('ABCDEFGH:/MNRPQR/', '', 10, -1)
-	//   returns 6: 'ABCDEFGH://'
-
 	if (start < 0) { // start position in str
 		start = start + str.length;
 	}
@@ -226,6 +209,5 @@ function substr_replace(str, replace, start, length) {
 	if (length < 0) {
 		length = length + str.length - start;
 	}
-
 	return str.slice(0, start) + replace.substr(0, length) + replace.slice(length) + str.slice(start + length);
 }
